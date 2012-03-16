@@ -72,7 +72,7 @@ define reprepro::distribution (
 
   # FIXME: this exec don't works with user=>reprepro ?!?
   exec {"export distribution $name":
-    command     => "su -c 'reprepro -b ${reprepro::params::basedir}/${repository} export ${codename}' reprepro",
+    command     => "/bin/su -c '/usr/bin/reprepro -b ${reprepro::params::basedir}/${repository} export ${codename}' reprepro",
     refreshonly => true,
     require     => [User[reprepro], Reprepro::Repository[$repository]],
   }
